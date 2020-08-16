@@ -247,3 +247,63 @@ nav a {
 .blog-detail a p {
   line-height: 1.2;
 }
+
+/* contact form */
+
+#contact {
+  background: #393333;
+}
+.contact-title {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 4rem 0 0;
+  color: #ffffff;
+}
+#form {
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#form div {
+  margin: 0.5rem 0;
+  width: 300px;
+}
+#form label {
+  color: #ffffff;
+  padding-bottom: 0.5rem;
+}
+@media (max-width: 319px) {
+  #form div {
+    width: 250px;
+  }
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  outline: none;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.button-container {
+  text-align: center;
+  margin: inherit;
+}
+.button-container .btn {
+  background: #0069d9;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  width: 100%;
+  text-transform: capitalize;
+  border-radius: 5px;
+  border: none;
+}
+.button-container .btn:hover {
+  cursor: pointer;
+  background: #0873e6;
+  transition: background 0.5s;
+}
