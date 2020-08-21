@@ -532,8 +532,6 @@ textarea {
 
 /* LOGIN PAGE STARTS */
 
-/* 
-
 #signin-form {
   height: 100vh;
   display: flex;
@@ -559,6 +557,6 @@ textarea {
 #sign-btn {
   margin-top: 0;
   width: 100px;
-} */
+}
 
 /* INDEX.HTML STYLES ENDS */
