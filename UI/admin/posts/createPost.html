@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/admin.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.14.1/ckeditor.js"
+      integrity="sha512-P4rrEImABBYtBFdmrFPqF8rjh8iiRiupfQ4KLrBCL8dAivLiM2nh+1bJQeMb2ZglmIlGZdfTtgGdXH6H/hGVeg=="
+      crossorigin="anonymous"
+    ></script>
+    <title>Admin | Add Post</title>
+  </head>
+  <body>
+    <header>
+      <div class="container container-nav">
+        <div class="title">
+          <a href="../../index.html">
+            <img src="../../img/logo.svg" alt="logo" />
+          </a>
+        </div>
+        <nav>
+          <i class="fas fa-bars toggle-menu" id="menu"></i>
+          <ul class="show-desktop hide-mobile" id="nav">
+            <li class="exit-btn hide-desktop">
+              <i class="fas fa-times"></i>
+            </li>
+
+            <li><a href="../../index.html">logout</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section class="admin-wrapper">
+      <!-- left sidebar -->
+      <div class="left-sidebar">
+        <ul>
+          <li>
+            <a hre="index.html">manage post</a>
+          </li>
+          <li>
+            <a href="../users/index.html">manage user</a>
+          </li>
+          <li>
+            <a href="../topics/index.html">manage topics</a>
+          </li>
+        </ul>
+      </div>
+      <!-- admin content -->
+      <div class="admin-content">
+        <div class="btn-group">
+          <a href="./createPost.html" class="btn ad-btn">add post</a>
+          <a href="./index.html" class="btn ad-btn">manage posts</a>
+          <a href="./queries.html" class="btn ad-btn">queries</a>
+        </div>
+
+        <div class="content">
+          <h1 class="manage-title">add post</h1>
+          <form action="createPost.html" method="post" id="blog-form">
+            <div>
+              <label for="title">title</label>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                placeholder="typing title ...."
+              />
+            </div>
+            <div>
+              <label for="file">Add Image</label>
+              <input type="file" name="file" id="file" />
+            </div>
+            <div>
+              <label for="textarea">Blog Content</label>
+              <textarea name="blog-content"></textarea>
+            </div>
+            <div>
+              <label for="Author" style="margin-bottom: 2rem;">Author</label>
+              <select name="blog-status">
+                <option value="" disabled>Author</option>
+                <option value="Public">Gilbert</option>
+                <option value="Private">Denis</option>
+                <option value="Private">Elnino</option>
+              </select>
+              <hr />
+            </div>
+            <div class="blog-btn">
+              <button type="submit" class="btn1" id="save-btn">save</button>
+              <button type="submit" class="btn2" id="cancel-btn">cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script>
+      CKEDITOR.replace("blog-content", {
+        plugins:
+          "wysiwygarea,toolbar,basicstyles,link ,iframe,image,list,liststyle,colorbutton,colordialog,menu",
+      });
+    </script>
+  </body>
+</html>
