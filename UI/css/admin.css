@@ -1,0 +1,147 @@
+header {
+  color: #ffffff;
+  height: inherit;
+  position: inherit;
+  width: inherit;
+}
+
+.admin-wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  height: 100%;
+}
+
+.admin-wrapper .left-sidebar {
+  background: #1b1414;
+}
+
+.left-sidebar li {
+  text-align: center;
+}
+.left-sidebar ul {
+  margin-top: 2rem;
+}
+
+.left-sidebar a {
+  color: #ffffff;
+  text-transform: capitalize;
+  display: block;
+  padding: 1.2rem;
+  border-bottom: 1px solid #ffffff;
+  cursor: pointer;
+}
+.left-sidebar a:hover {
+  background-color: #464343;
+}
+
+.admin-content {
+  padding: 3rem 5rem;
+  overflow: scroll;
+}
+.manage-title {
+  text-transform: capitalize;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+/* ADMIN BTN */
+.btn-group {
+  margin: 2rem 0;
+}
+.ad-btn {
+  padding: 0.5rem;
+  color: #ffffff;
+  text-transform: capitalize;
+}
+
+.edit {
+  color: green;
+}
+.delete {
+  color: red;
+}
+.publish {
+  color: blue;
+}
+.edit:hover,
+.delete:hover,
+.publish:hover {
+  text-decoration: underline;
+}
+
+/* TABLE */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.2rem;
+  border: 1px solid #1b1414;
+}
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border: 1px solid #1b1414;
+}
+th {
+  text-transform: capitalize;
+  background-color: lightgray;
+  text-align: center;
+}
+
+/* Create post page */
+#blog-form {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#blog-form div {
+  width: 80%;
+  margin: 0.5rem 0;
+}
+#blog-form input,
+#blog-form textarea,
+#blog-form select {
+  width: 100%;
+}
+#blog-form input,
+#blog-form select {
+  background: rgb(241, 241, 241);
+  outline: none;
+  border: 1px solid #faf2f2;
+}
+
+#blog-form textarea {
+  margin-top: 1rem;
+}
+#blog-form textarea:focus {
+  border: none;
+}
+.blog-btn #save-btn,
+.blog-btn #cancel-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  border-radius: 5px;
+  border: none;
+  color: #ffffff;
+}
+
+.blog-btn #save-btn {
+  background: #0069d9;
+}
+.blog-btn .btn1:hover {
+  cursor: pointer;
+  background: #0873e6;
+  transition: background 0.5s;
+}
+.blog-btn #cancel-btn {
+  background: #d900b5;
+}
+.blog-btn .btn2:hover {
+  cursor: pointer;
+  background: #e60877;
+  transition: background 0.5s;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/admin.css" />
+    <title>Admin | Manage Posts</title>
+  </head>
+  <body>
+    <header>
+      <div class="container container-nav">
+        <div class="title">
+          <a href="../../index.html">
+            <img src="../../img/logo.svg" alt="logo" />
+          </a>
+        </div>
+        <nav>
+          <i class="fas fa-bars toggle-menu" id="menu"></i>
+          <ul class="show-desktop hide-mobile" id="nav">
+            <li class="exit-btn hide-desktop">
+              <i class="fas fa-times"></i>
+            </li>
+
+            <li><a href="../../index.html">logout</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section class="admin-wrapper">
+      <!-- left sidebar -->
+      <div class="left-sidebar">
+        <ul>
+          <li>
+            <a hre="index.html">manage post</a>
+          </li>
+          <li>
+            <a href="../users/index.html">manage user</a>
+          </li>
+          <li>
+            <a href="../topics/index.html">manage topics</a>
+          </li>
+        </ul>
+      </div>
+      <!-- admin content -->
+      <div class="admin-content">
+        <div class="btn-group">
+          <a href="./createPost.html" class="btn ad-btn">add post</a>
+          <a href="./index.html" class="btn ad-btn">manage posts</a>
+          <a href="./queries.html" class="btn ad-btn">queries</a>
+        </div>
+
+        <div class="content">
+          <h1 class="manage-title">All Queries</h1>
+          <table>
+            <thead>
+              <th>sn</th>
+              <th>name</th>
+              <th>email</th>
+              <th>message</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Niyogakiza Robert</td>
+                <td>gilbet@test.com</td>
+                <td>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Debitis doloremque culpa vero quasi, eos reiciendis ullam
+                    saepe. Libero, impedit voluptate.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>John Doe</td>
+                <td>doe@test.com</td>
+                <td>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Debitis doloremque culpa vero quasi, eos reiciendis ullam
+                    saepe. Libero, impedit voluptate.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Willy Smith</td>
+                <td>smith@test.com</td>
+                <td>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Debitis doloremque culpa vero quasi, eos reiciendis ullam
+                    saepe. Libero, impedit voluptate.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
