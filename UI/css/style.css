@@ -457,7 +457,10 @@ textarea {
   padding: 0.5rem;
   outline: none;
   width: 100%;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
+}
+#name {
+  text-transform: capitalize;
 }
 
 .button-container {
@@ -560,3 +563,27 @@ textarea {
 }
 
 /* INDEX.HTML STYLES ENDS */
+
+/* error message and success*/
+
+.error-message {
+  background: #8f0101;
+  color: #ffffff;
+  padding: 10px;
+  margin: 2rem;
+  text-align: center;
+  text-transform: capitalize;
+  display: none;
+}
+.err-border {
+  border: 0px solid red;
+}
+.alert {
+  color: #ffffff;
+  padding: 10px;
+  background: #79c879;
+  margin: 0.5rem 2rem;
+  text-align: center;
+  text-transform: capitalize;
+  display: none;
+}
