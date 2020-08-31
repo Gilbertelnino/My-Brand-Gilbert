@@ -41,9 +41,7 @@
           <h1>Hello,I'm <span class="name">Gilbert Ndatimana</span>.</h1>
           <h1>I'm full-stack web developer</h1>
           <a href="#portfolio" class="btn">
-            <div class="btn-text">
-              View My Work
-            </div>
+            <div class="btn-text">View My Work</div>
           </a>
         </div>
       </div>
@@ -55,27 +53,21 @@
         <div class="feature">
           <span class="icon"><img src="./img/fast.png" alt="fast icon" /></span>
           <h3>Faster</h3>
-          <p>
-            Fast load times and lag free interaction, my highest priority.
-          </p>
+          <p>Fast load times and lag free interaction, my highest priority.</p>
         </div>
         <div class="feature">
           <span class="icon"
             ><img src="./img/responsive-design.svg" alt="responsive icon"
           /></span>
           <h3>Responsive</h3>
-          <p>
-            My layouts will work on any device, big or small
-          </p>
+          <p>My layouts will work on any device, big or small</p>
         </div>
         <div class="feature">
           <span class="icon"
             ><img src="./img/intuitive.png" alt="intuitive icon"
           /></span>
           <h3>intuitive</h3>
-          <p>
-            Strong preference for easy to use, intuitive UX/UI.
-          </p>
+          <p>Strong preference for easy to use, intuitive UX/UI.</p>
         </div>
         <div class="feature">
           <span class="icon"
@@ -131,7 +123,7 @@
       </section>
     </div>
     <section id="portfolio">
-      <h1 class="section-title" style="color: white;">my projects</h1>
+      <h1 class="section-title" style="color: white">my projects</h1>
       <div class="portfolio container">
         <!-- Portfolio item 01 -->
         <a href="#" class="portfolio__item">
@@ -159,7 +151,7 @@
       </div>
     </section>
     <section id="blog">
-      <h1 class="section-title" style="color: white;">blogs</h1>
+      <h1 class="section-title" style="color: white">blogs</h1>
 
       <div class="blog container">
         <div class="card">
@@ -246,36 +238,44 @@
       </div>
     </section>
 
-    <section id="contact" style="margin-top: 2rem;">
+    <section id="contact" style="margin-top: 2rem">
       <h1 class="contact-title">contact us</h1>
-
       <div class="contact">
+        <div class="alert">you message sent successfully</div>
+        <p class="error-message"></p>
         <form action="#" id="form">
           <div>
             <label for="name">Name</label>
             <input
               type="text"
-              name="text"
-              id="email"
+              name="name"
+              id="name"
               placeholder="Your Name"
-              required
               role="name"
+              class="err-border"
             />
           </div>
           <div>
             <label for="email">Email</label>
             <input
               type="email"
-              name="text"
-              id="password"
+              name="email"
+              id="email"
               placeholder="Your email"
-              required
               role="email"
+              class="err-border"
             />
           </div>
           <div>
             <label for="email">Message</label>
-            <textarea name="message" cols="30" rows="10">Message</textarea>
+            <textarea
+              name="message"
+              cols="30"
+              rows="10"
+              id="message"
+              placeholder="write your message here..."
+              class="err-border"
+            ></textarea>
           </div>
           <div class="button-container send-btn">
             <button type="submit" class="btn" id="sign-btn">send</button>
@@ -318,27 +318,14 @@
         </li>
       </ul>
     </footer>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
 
-    <script>
-      const navLink = document.querySelectorAll(".nav-link");
-      const menu = document.querySelector("#menu");
-      const ul = document.querySelector("ul");
-      const exit = document.querySelector(".exit-btn");
-      const openMenu = () => {
-        ul.classList.toggle("hide-mobile");
-      };
-      const closeMenu = () => {
-        ul.classList.add("hide-mobile");
-      };
-      menu.addEventListener("click", openMenu);
-      exit.addEventListener("click", closeMenu);
-      navLink.forEach((link) => {
-        link.addEventListener("click", () => {
-          ul.classList.add("hide-mobile");
-          console.log("clicked");
-        });
-      });
-    </script>
-    <script src="main.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+    <script src="./js/nav.js"></script>
+    <script src="./js/contact.js"></script>
   </body>
 </html>
