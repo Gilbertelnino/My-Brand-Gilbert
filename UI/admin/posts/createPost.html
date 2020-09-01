@@ -57,7 +57,7 @@
 
         <div class="content">
           <h1 class="manage-title">add post</h1>
-          <form action="createPost.html" method="post" id="blog-form">
+          <form id="blog-form">
             <div>
               <label for="title">title</label>
               <input
@@ -68,20 +68,29 @@
               />
             </div>
             <div>
+              <label for="title">Subtitle</label>
+              <input
+                type="text"
+                name="title"
+                id="subtitle"
+                placeholder="typing subtitle ...."
+              />
+            </div>
+            <div>
               <label for="file">Add Image</label>
-              <input type="file" name="file" id="file" />
+              <progress value="0" max="100" id="uploader">0%</progress>
+              <input type="file" name="file" id="image" value="upload" />
             </div>
             <div>
               <label for="textarea">Blog Content</label>
-              <textarea name="blog-content"></textarea>
+              <textarea name="blog-content" id="blog-content"></textarea>
             </div>
             <div>
-              <label for="Author" style="margin-bottom: 2rem;">Author</label>
-              <select name="blog-status">
-                <option value="" disabled>Author</option>
-                <option value="Public">Gilbert</option>
-                <option value="Private">Denis</option>
-                <option value="Private">Elnino</option>
+              <label for="Author" style="margin-bottom: 2rem">Author</label>
+              <select name="author" id="author">
+                <option value="Gilbert">Gilbert</option>
+                <option value="Denis">Denis</option>
+                <option value="Elnino">Elnino</option>
               </select>
               <hr />
             </div>
@@ -99,5 +108,13 @@
           "wysiwygarea,toolbar,basicstyles,link ,iframe,image,list,liststyle,colorbutton,colordialog,menu",
       });
     </script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+    <script src="../../js/init.js"></script>
+    <script src="../../js/nav.js"></script>
+    <script src="../../js/createBlog.js"></script>
   </body>
 </html>
