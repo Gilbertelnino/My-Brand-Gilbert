@@ -59,123 +59,18 @@
               <th>author</th>
               <th colspan="3">action</th>
             </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>this is first post</td>
-                <td>gilbert</td>
-                <td><a href="./createPost.html" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>this is second post</td>
-                <td>elnino</td>
-                <td><a href="./createPost.html" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>this is third post</td>
-                <td>denis</td>
-                <td><a href="./createPost.html" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>this is third post</td>
-                <td>denis</td>
-                <td><a href="./createPost.html" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>this is third post</td>
-                <td>denis</td>
-                <td><a href="#" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>this is third post</td>
-                <td>denis</td>
-                <td><a href="#" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>this is third post</td>
-                <td>denis</td>
-                <td><a href="#" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>this is third post</td>
-                <td>denis</td>
-                <td><a href="#" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>this is third post</td>
-                <td>denis</td>
-                <td><a href="#" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>this is third post</td>
-                <td>denis</td>
-                <td><a href="#" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>this is third post</td>
-                <td>denis</td>
-                <td><a href="#" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>this is third post</td>
-                <td>denis</td>
-                <td><a href="#" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>this is third post</td>
-                <td>denis</td>
-                <td><a href="#" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>this is third post</td>
-                <td>denis</td>
-                <td><a href="#" class="edit">edit</a></td>
-                <td><a href="#" class="delete">delete</a></td>
-                <td><a href="#" class="publish">publish</a></td>
-              </tr>
-            </tbody>
+            <tbody id="admin-posts"></tbody>
           </table>
         </div>
       </div>
     </section>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+
+    <script src="../../js/init.js"></script>
+    <script src="../../js/nav.js"></script>
+    <script src="../../js/blogAdminView.js"></script>
   </body>
 </html>
