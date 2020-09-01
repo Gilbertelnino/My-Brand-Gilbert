@@ -1,3 +1,14 @@
+// keep state change. if user logged in or not
+
+auth.onAuthStateChanged((user) => {
+  //   checks if user is logged in
+  if (user) {
+    getData();
+  } else {
+    console.log("logged out");
+  }
+});
+
 const signinForm = document.querySelector("#signin-form");
 const errorMessage = document.querySelector("#sign-error");
 
@@ -21,4 +32,14 @@ const signIn = (e) => {
       }, 5000);
     });
 };
-signinForm.addEventListener("submit", signIn);
+// signinForm.addEventListener("submit", signIn);
+
+// logout
+const logout = document.querySelector("#logout");
+
+const logOut = (e) => {
+  e.preventDefault();
+  auth.signOut();
+};
+
+logout.addEventListener("click", logOut);

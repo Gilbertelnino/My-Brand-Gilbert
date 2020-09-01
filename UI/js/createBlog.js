@@ -57,6 +57,7 @@ const uploadFile = (e) => {
               } else {
                 alert("successfully");
                 document.getElementById("blog-form").reset();
+                document.getElementById("blog-content").reset();
               }
             }
           );
@@ -67,3 +68,10 @@ const uploadFile = (e) => {
 
 // event listener
 uploadButton.addEventListener("submit", uploadFile);
+
+// canceling publish
+
+document.getElementById("cancel-btn").addEventListener("click", (e) => {
+  document.getElementById("blog-form").reset();
+  document.getElementById("image").files[0].reset();
+});
