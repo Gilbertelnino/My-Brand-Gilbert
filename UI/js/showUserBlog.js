@@ -22,7 +22,7 @@ const getData = () => {
       for (let [key, value] of Object.entries(data)) {
         blog_posts.innerHTML = `
             <div class="card">
-                <a href="#">
+                <a href="./html/article.html?blog=${key}">
                   <img src=${value.imageURL} alt="blog img" />
                   <h1>${value.title}</h1>
                   <p>
@@ -42,5 +42,3 @@ const getData = () => {
       }
     });
 };
-
-// getData();
