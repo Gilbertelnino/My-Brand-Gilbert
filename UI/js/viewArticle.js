@@ -27,4 +27,43 @@ const fullMode = () => {
       `;
     });
 };
+
 fullMode();
+
+// add comment
+const commentForm = document.querySelector("#comment-form");
+
+const createComments = (e) => {
+  e.preventDefault();
+  let commentName = document.getElementById("comment-name").value;
+  let commentEmail = document.getElementById("comment-email").value;
+  let commentContent = document.getElementById("comment-content").value;
+  firebase
+    .database()
+    .ref("Blogs/Comments/")
+    .push()
+    .set({
+      name: commentName,
+      email: commentEmail,
+      content: commentContent,
+    })
+    .then(() => {
+      document.getElementById("comment").innerHTML += `
+    <div class="comment">
+              <i class="fas fa-comment"></i>
+              <div class="com-content">
+                <h3>${commentName}</h3>
+                <p>
+                  ${commentContent}
+                </p>
+              </div>
+            </div>
+    `;
+      commentForm.reset();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+commentForm.addEventListener("submit", createComments);
