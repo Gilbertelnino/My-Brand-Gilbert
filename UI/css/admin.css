@@ -145,3 +145,62 @@ th {
   background: #e60877;
   transition: background 0.5s;
 }
+
+/* edit blog */
+/* edit blog */
+
+#edit-blog {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#edit-blog div {
+  width: 80%;
+  margin: 0.5rem 0;
+}
+#edit-blog input,
+#edit-blog textarea,
+#edit-blog select {
+  width: 100%;
+}
+#edit-blog input,
+#edit-blog select {
+  background: rgb(241, 241, 241);
+  outline: none;
+  border: 1px solid #faf2f2;
+}
+
+#edit-blog textarea {
+  margin-top: 1rem;
+}
+#edit-blog textarea:focus {
+  border: none;
+}
+.edit-btn #update-btn,
+.edit-btn #cancel-update-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  border-radius: 5px;
+  border: none;
+  color: #ffffff;
+}
+
+.edit-btn #update-btn {
+  background: #0069d9;
+}
+.edit-btn .btn1:hover {
+  cursor: pointer;
+  background: #0873e6;
+  transition: background 0.5s;
+}
+.edit-btn #cancel-update-btn {
+  background: #d900b5;
+}
+.edit-btn .btn2:hover {
+  cursor: pointer;
+  background: #e60877;
+  transition: background 0.5s;
+}

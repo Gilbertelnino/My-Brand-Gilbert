@@ -21,7 +21,7 @@ function getData() {
           <td>${key}</td>
           <td>${value.title}</td>
           <td>${value.author}</td>
-          <td><a href="./editBlog.html" class="edit" onclick="updateBlog(${key},'${value.title}','${value.subtitle}')">edit</a></td>
+          <td><a href="./editBlog.html?key=${key}" class="edit")">edit</a></td>
           <td><button class="delete" id=${key} onClick="deletePost(
             this.id
           )">delete</button></td>

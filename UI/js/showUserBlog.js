@@ -6,6 +6,8 @@ const getData = () => {
   firebase
     .database()
     .ref("Blogs/")
+    .orderByChild("key")
+    .limitToLast(3)
     .once("value")
     .then((snapshot) => {
       let blog_posts = document.querySelector(".blog-container");
