@@ -73,7 +73,7 @@ const databaseRef = firebase.database().ref();
 
 function loadComments() {
   databaseRef
-    .child("Comments")
+    .child("Comments/")
     .orderByChild("article_id")
     .equalTo(article)
     .on("value", (snapshot) => {
