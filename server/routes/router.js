@@ -2,6 +2,7 @@ import express from "express";
 
 import { PostController } from "../controllers/PostControllers";
 import { UserController } from "../controllers/UserControllers";
+import { QueriesControllers } from "../controllers/QueriesControllers";
 
 import verify from "../middlewares/verifyToken";
 const router = express.Router();
@@ -23,5 +24,13 @@ router.post("/articles/:id/comments", PostController.comments);
 router.patch("/articles/:id", verify, PostController.updateArticle);
 // Delete an existing article
 router.delete("/articles/:id", verify, PostController.deleteArticle);
+
+// Queries routes
+// get all queries
+router.get("/queries", verify, QueriesControllers.readQueries);
+// Create queries
+router.post("/query/create", QueriesControllers.createQuery);
+// delete query
+router.delete("/queries/:id", verify, QueriesControllers.deleteQuery);
 
 export default router;
