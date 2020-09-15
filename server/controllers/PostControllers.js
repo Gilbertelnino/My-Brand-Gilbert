@@ -1,20 +1,20 @@
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-
 import Post from "../models/Posts";
-import {
-  postValidation,
-  loginValidation,
-  commentValidation,
-} from "../validator/validation";
+import { postValidation, commentValidation } from "../validator/validation";
 import { onSuccess, onError } from "../utils/response";
-import Admin from "../models/User";
 
 export class PostController {
   //  Retrieve a list of all articles
   static async retriveArticles(req, res) {
-    const posts = await Post.find();
-    return onSuccess(res, 200, "post fetched successfully", posts);
+    try {
+      const posts = await Post.find();
+      if (!posts) {
+        return onError(res, 404, "No articles Yet!");
+      } else {
+        return onSuccess(res, 200, "post fetched successfully", posts);
+      }
+    } catch (error) {
+      return onError(res, 500, "Internal Server Error");
+    }
   }
 
   // create an article
@@ -32,8 +32,7 @@ export class PostController {
       const savePost = await post.save();
       return onSuccess(res, 201, "Post created successfull", savePost);
     } catch (err) {
-      console.log(err);
-      return onError(res, 400, "something went wrong");
+      return onError(res, 500, "internal server error");
     }
   }
   // Retrieve a single article
@@ -47,8 +46,7 @@ export class PostController {
         return onSuccess(res, 200, "post fetched successfully", post);
       }
     } catch (error) {
-      console.log(error);
-      return onError(res, 400, "something went wrong");
+      return onError(res, 500, "internal server error");
     }
   }
 
@@ -70,8 +68,7 @@ export class PostController {
         return onSuccess(res, 201, "comment created successfull", comment);
       }
     } catch (err) {
-      console.log(err);
-      return onError(res, 400, "something went wrong");
+      return onError(res, 500, "internal server error");
     }
   }
   //// Update an existing article
@@ -93,8 +90,7 @@ export class PostController {
         return onSuccess(res, 200, "post updated successfully", update);
       }
     } catch (error) {
-      console.log(error);
-      return onError(res, 400, "something went wrong");
+      return onError(res, 500, "internal server error");
     }
   }
   // Delete an existing article
@@ -108,61 +104,7 @@ export class PostController {
         return onSuccess(res, 204, "post deleted successfully", onePost);
       }
     } catch (error) {
-      console.log(error);
-      return onError(res, 400, "something went wrong");
+      return onError(res, 500, "Internal Server Error");
     }
-  }
-}
-
-export class UserController {
-  // create user
-  static async createUser(req, res) {
-    // validate signup
-    const { error } = loginValidation(req.body);
-    if (error) return onError(res, 400, error.details[0].message);
-    // check user if is already an admin
-
-    const emailExist = await Admin.findOne({ email: req.body.email });
-    if (emailExist) return onError(res, 400, "Email already exist");
-
-    // Hash passwords
-
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
-    const admin = new Admin({
-      email: req.body.email,
-      password: hashedPassword,
-    });
-
-    try {
-      const saveAdmin = await admin.save();
-      return onSuccess(res, 201, "Admin Signup successfully", saveAdmin);
-    } catch (err) {
-      return onError(res, 400, err);
-    }
-  }
-  static async loginUser(req, res) {
-    const { error } = loginValidation(req.body);
-    if (error) return onError(res, 400, error.details[0].message);
-    // check if is exists
-
-    const user = await Admin.findOne({ email: req.body.email });
-    if (!user) return onError(res, 401, "Email Not Found");
-
-    // check if password is correct
-    const validPassword = await bcrypt.compare(
-      req.body.password,
-      user.password
-    );
-    if (!validPassword) return onError(res, 401, "Password do not match");
-
-    // create a token
-
-    const token = jwt.sign({ user: user }, process.env.TOKEN_SECRET_KEY);
-    res.header("auth-token", token).json({
-      token,
-      message: "User Logged in successfully",
-    });
   }
 }
