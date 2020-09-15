@@ -1,9 +1,21 @@
 import mongoose from "mongoose";
 
 const schema = mongoose.Schema({
-  name: String,
-  email: String,
-  message: String,
+  name: {
+    type: String,
+    required: true,
+    min: 3,
+  },
+  email: {
+    type: String,
+    required: true,
+    min: 3,
+  },
+  message: {
+    type: String,
+    required: true,
+    min: 6,
+  },
   date: {
     type: Date,
     default: Date.now,
