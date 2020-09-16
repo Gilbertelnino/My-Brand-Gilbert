@@ -83,7 +83,7 @@ export class PostController {
         );
       } else {
         post.title = req.body.title;
-        post.subtitle = req.body.title;
+        post.subtitle = req.body.subtile;
         post.content = req.body.content;
         post.author = req.body.author;
         const update = await post.save();

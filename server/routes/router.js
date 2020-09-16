@@ -3,6 +3,7 @@ import express from "express";
 import { PostController } from "../controllers/PostControllers";
 import { UserController } from "../controllers/UserControllers";
 import { QueriesControllers } from "../controllers/QueriesControllers";
+import { ProfileControllers } from "../controllers/ProfileControllers";
 
 import verify from "../middlewares/verifyToken";
 const router = express.Router();
@@ -33,4 +34,15 @@ router.post("/query/create", QueriesControllers.createQuery);
 // delete query
 router.delete("/queries/:id", verify, QueriesControllers.deleteQuery);
 
+// PROFILE INFORMATION
+// create profile
+router.post("/profile/create", verify, ProfileControllers.createProfile);
+// get profile
+router.get("/profile", ProfileControllers.getProfile);
+
+// update profile
+router.patch("/profile/:id/edit", verify, ProfileControllers.updateProfile);
+
+// delete profile
+router.delete("/profile/:id/delete", verify, ProfileControllers.deleteProfile);
 export default router;
