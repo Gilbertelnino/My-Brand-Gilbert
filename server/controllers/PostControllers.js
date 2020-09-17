@@ -1,4 +1,5 @@
-import Post from "../models/Posts";
+import Blogs from "../models/Posts";
+import BlogComments from "../models/CommentsModel";
 import { postValidation, commentValidation } from "../validator/validation";
 import { onSuccess, onError } from "../utils/response";
 
@@ -6,7 +7,7 @@ export class PostController {
   //  Retrieve a list of all articles
   static async retriveArticles(req, res) {
     try {
-      const posts = await Post.find();
+      const posts = await Blogs.find();
       if (!posts) {
         return onError(res, 404, "No articles Yet!");
       } else {
@@ -21,7 +22,7 @@ export class PostController {
   static async createPost(req, res) {
     const { error } = postValidation(req.body);
     if (error) return onError(res, 400, error.details[0].message);
-    const post = new Post({
+    const post = new Blogs({
       title: req.body.title,
       subtitle: req.body.title,
       content: req.body.content,
@@ -38,7 +39,9 @@ export class PostController {
   // Retrieve a single article
   static async retrieveOnePost(req, res) {
     try {
-      const post = await Post.findOne({ _id: req.params.id });
+      const post = await Blogs.findOne({ _id: req.params.id }).populate(
+        "comments"
+      );
 
       if (!post) {
         return onError(res, 404, "Post you are trying to fetch doesn't exists");
@@ -54,27 +57,50 @@ export class PostController {
   static async comments(req, res) {
     const { error } = commentValidation(req.body);
     if (error) return onError(res, 400, error.details[0].message);
-    const comments = new Post({
+    const comments = new BlogComments({
       name: req.body.name,
       email: req.body.email,
-      content: req.body.content,
+      commentContent: req.body.commentContent,
     });
 
     try {
-      const post = await Post.findOne({ _id: req.params.id });
-      if (!post) return onError(res, 404, "post not found");
+      const blog = await Blogs.findOne({ _id: req.params.id });
+      if (!blog) return onError(res, 404, "post not found");
       else {
         const comment = await comments.save();
+        blog.comments.push(comment);
+        blog.comments_total++;
+        await blog.save();
+
         return onSuccess(res, 201, "comment created successfull", comment);
       }
     } catch (err) {
+      console.log(err);
       return onError(res, 500, "internal server error");
     }
   }
+  // Add likes
+  static async likes(req, res) {
+    try {
+      const blog = await Blogs.findOne({ _id: req.params.id });
+      if (!blog) {
+        return onError(res, 404, "Not article found");
+      } else {
+        const updateLikes = await Blogs.updateOne(
+          { _id: req.params.id },
+          { $inc: { likes: 1 } }
+        );
+        return onSuccess(res, 201, "Like added successfully!", updateLikes);
+      }
+    } catch (error) {
+      return onError(res, 500, "Internal Server Error");
+    }
+  }
+
   //// Update an existing article
   static async updateArticle(req, res) {
     try {
-      const post = await Post.findOne({ _id: req.params.id });
+      const post = await Blogs.findOne({ _id: req.params.id });
       if (!post) {
         return onError(
           res,
@@ -96,7 +122,7 @@ export class PostController {
   // Delete an existing article
   static async deleteArticle(req, res) {
     try {
-      const post = await Post.findOne({ _id: req.params.id });
+      const post = await Blogs.findOne({ _id: req.params.id });
       if (!post)
         return onError(res, 404, "post you are trying to delete doesn't exist");
       else {
