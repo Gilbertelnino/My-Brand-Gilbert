@@ -20,6 +20,8 @@ router.post("/articles/create", verify, PostController.createPost);
 router.get("/articles/:id", verify, PostController.retrieveOnePost);
 // create comments
 router.post("/articles/:id/comments", PostController.comments);
+// add likes
+router.patch("/likes/:id", PostController.likes);
 
 // Update an existing article
 router.patch("/articles/:id", verify, PostController.updateArticle);

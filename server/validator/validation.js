@@ -5,8 +5,8 @@ export const postValidation = (data) => {
   const schema = Joi.object({
     title: Joi.string().min(8).max(25).required(),
     subtitle: Joi.string().min(10).max(50).required(),
-    content: Joi.string().min(5).max(24).required(),
-    author: Joi.string().min(3).max(50).required(),
+    content: Joi.string().min(5).required(),
+    author: Joi.string().min(3).required(),
   });
   return schema.validate(data);
 };
@@ -21,7 +21,7 @@ export const commentValidation = (data) => {
   const schema = Joi.object({
     name: Joi.string().min(3).required(),
     email: Joi.string().min(3).required().email(),
-    content: Joi.string().min(6).required(),
+    commentContent: Joi.string().min(6).required(),
   });
   return schema.validate(data);
 };
