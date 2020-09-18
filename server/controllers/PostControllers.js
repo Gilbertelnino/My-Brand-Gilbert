@@ -8,7 +8,8 @@ export class PostController {
   static async retriveArticles(req, res) {
     try {
       const posts = await Blogs.find();
-      if (!posts) {
+      console.log(posts);
+      if (posts.length === 0) {
         return onError(res, 404, "No articles Yet!");
       } else {
         return onSuccess(res, 200, "post fetched successfully", posts);
@@ -22,9 +23,12 @@ export class PostController {
   static async createPost(req, res) {
     const { error } = postValidation(req.body);
     if (error) return onError(res, 400, error.details[0].message);
+    if (!req.file) return onError(res, 400, "Image is required");
+    console.log(req.file);
     const post = new Blogs({
       title: req.body.title,
-      subtitle: req.body.title,
+      subtitle: req.body.subtitle,
+      image: req.file.path,
       content: req.body.content,
       author: req.body.author,
     });
@@ -33,6 +37,7 @@ export class PostController {
       const savePost = await post.save();
       return onSuccess(res, 201, "Post created successfull", savePost);
     } catch (err) {
+      console.log(err);
       return onError(res, 500, "internal server error");
     }
   }
@@ -109,13 +114,15 @@ export class PostController {
         );
       } else {
         post.title = req.body.title;
-        post.subtitle = req.body.subtile;
+        post.subtitle = req.body.subtitle;
+        post.image = req.file.path;
         post.content = req.body.content;
         post.author = req.body.author;
         const update = await post.save();
         return onSuccess(res, 200, "post updated successfully", update);
       }
     } catch (error) {
+      console.log(error);
       return onError(res, 500, "internal server error");
     }
   }
@@ -126,7 +133,7 @@ export class PostController {
       if (!post)
         return onError(res, 404, "post you are trying to delete doesn't exist");
       else {
-        const onePost = await Post.deleteOne({ _id: req.params.id });
+        const onePost = await Blogs.deleteOne({ _id: req.params.id });
         return onSuccess(res, 204, "post deleted successfully", onePost);
       }
     } catch (error) {

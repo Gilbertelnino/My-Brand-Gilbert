@@ -9,6 +9,7 @@ dotenv.config();
 connectDB();
 const app = express();
 app.use(express.json());
+app.use("/images", express.static("images"));
 
 app.use("/api", routers);
 
