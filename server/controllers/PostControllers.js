@@ -8,7 +8,6 @@ export class PostController {
   static async retriveArticles(req, res) {
     try {
       const posts = await Blogs.find();
-      console.log(posts);
       if (posts.length === 0) {
         return onError(res, 404, "No articles Yet!");
       } else {
