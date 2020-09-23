@@ -26,7 +26,7 @@ export class QueriesControllers {
     try {
       const queries = await Queries.find();
 
-      if (!queries) {
+      if (queries.length === 0) {
         return onError(res, 404, "No message Yet!");
       } else {
         return onSuccess(res, 200, "message fetched successfully", queries);
@@ -48,7 +48,7 @@ export class QueriesControllers {
         );
       else {
         const oneMessage = await Queries.deleteOne({ _id: req.params.id });
-        return onSuccess(res, 204, "post deleted successfully", oneMessage);
+        return onSuccess(res, 200, "message deleted successfully", oneMessage);
       }
     } catch (error) {
       return onError(res, 500, "Internal Server Error");

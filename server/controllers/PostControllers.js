@@ -1,13 +1,16 @@
-import Blogs from "../models/Posts";
+import Blogs from "../models/Article";
 import BlogComments from "../models/CommentsModel";
 import { postValidation, commentValidation } from "../validator/validation";
 import { onSuccess, onError } from "../utils/response";
-
 export class PostController {
   //  Retrieve a list of all articles
   static async retriveArticles(req, res) {
     try {
-      const posts = await Blogs.find();
+      const posts = await Blogs.find().populate(
+        "comments",
+        "name commentContent -_id"
+      );
+
       if (posts.length === 0) {
         return onError(res, 404, "No articles Yet!");
       } else {
@@ -34,9 +37,8 @@ export class PostController {
 
     try {
       const savePost = await post.save();
-      return onSuccess(res, 201, "Post created successfull", savePost);
+      return onSuccess(res, 201, "Post created successfully", savePost);
     } catch (err) {
-      console.log(err);
       return onError(res, 500, "internal server error");
     }
   }
@@ -44,7 +46,8 @@ export class PostController {
   static async retrieveOnePost(req, res) {
     try {
       const post = await Blogs.findOne({ _id: req.params.id }).populate(
-        "comments"
+        "comments",
+        "name commentContent -_id"
       );
 
       if (!post) {
@@ -79,7 +82,6 @@ export class PostController {
         return onSuccess(res, 201, "comment created successfull", comment);
       }
     } catch (err) {
-      console.log(err);
       return onError(res, 500, "internal server error");
     }
   }
@@ -121,7 +123,6 @@ export class PostController {
         return onSuccess(res, 200, "post updated successfully", update);
       }
     } catch (error) {
-      console.log(error);
       return onError(res, 500, "internal server error");
     }
   }
@@ -133,7 +134,7 @@ export class PostController {
         return onError(res, 404, "post you are trying to delete doesn't exist");
       else {
         const onePost = await Blogs.deleteOne({ _id: req.params.id });
-        return onSuccess(res, 204, "post deleted successfully", onePost);
+        return onSuccess(res, 200, "post deleted successfully", onePost);
       }
     } catch (error) {
       return onError(res, 500, "Internal Server Error");

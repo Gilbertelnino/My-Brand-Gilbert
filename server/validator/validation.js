@@ -4,7 +4,7 @@ import Joi from "joi";
 export const postValidation = (data) => {
   const schema = Joi.object({
     title: Joi.string().min(8).max(25).required(),
-    subtitle: Joi.string().min(10).max(50).required(),
+    subtitle: Joi.string().min(8).max(50).required(),
     content: Joi.string().min(5).required(),
     author: Joi.string().min(3).required(),
   });
