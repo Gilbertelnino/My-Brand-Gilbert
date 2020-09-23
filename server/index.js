@@ -1,7 +1,8 @@
+import "@babel/polyfill";
 import express from "express";
 import dotenv from "dotenv";
 import routers from "./routes/router";
-import connectDB from "./models/db";
+import { connectDB } from "./models/db";
 
 dotenv.config();
 
@@ -15,4 +16,5 @@ app.use("/api", routers);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log(`server running  on port ${PORT}`));
+const server = app.listen(PORT, console.log(`server running  on port ${PORT}`));
+export default server;
