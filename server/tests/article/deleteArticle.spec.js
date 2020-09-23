@@ -9,7 +9,7 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const deleteArticle = () => {
-  after(async () => {
+  afterEach(async () => {
     await Article.deleteMany({});
     server.close();
   });
