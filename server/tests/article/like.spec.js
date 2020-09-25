@@ -1,5 +1,5 @@
 import chai from "chai";
-import { after } from "mocha";
+import { beforeEach, afterEach } from "mocha";
 import chaiHttp from "chai-http";
 import server from "../../index";
 import Article from "../../models/Article";
@@ -9,9 +9,11 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const addLike = () => {
-  after(async () => {
+  beforeEach(async () => {
     await Article.deleteMany({});
-    server.close();
+  });
+  afterEach(async () => {
+    await Article.deleteMany({});
   });
 
   it("should not be able to add like if id is invalid", (done) => {
