@@ -8,3 +8,11 @@ after_success:
 
 services:
   - mongodb
+
+env:
+  - MONGO_CONNECT=mongodb://localhost/test
+  - PORT=3000
+
+script:
+  - npm ci
+  - npm test
