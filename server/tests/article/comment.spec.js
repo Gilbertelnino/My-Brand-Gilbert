@@ -8,32 +8,31 @@ import ArticleValues from "../asset/article";
 const { expect } = chai;
 chai.use(chaiHttp);
 
-const deleteArticle = () => {
+const addComment = () => {
   beforeEach(async () => {
     await Article.deleteMany({});
   });
   afterEach(async () => {
     await Article.deleteMany({});
   });
-  it("should not able to delete article if there is no token provided", (done) => {
+
+  it("should return 400 if comment form input is invalid", (done) => {
     const article = new Article(ArticleValues.validArticle);
     article.save();
     chai
       .request(server)
-      .delete("/api/articles/" + article._id)
-      .set(ArticleValues.noTokenProvided)
+      .post("/api/articles/comments/" + article._id)
+      .send(ArticleValues.invalidComment)
       .end((err, res) => {
         expect(err).to.be.null;
-        expect(res).to.have.status(401);
-        expect(res.body).to.have.property("message", "access denied");
+        expect(res).to.have.status(400);
         done();
       });
   });
-  it("should not be able to delete article if id is invalid or id not found", (done) => {
+  it("should not be able to add comment to the article if article id is invalid", (done) => {
     chai
       .request(server)
-      .delete("/api/articles/1")
-      .set(ArticleValues.validToken)
+      .post("/api/articles/comments/1")
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(404);
@@ -41,23 +40,23 @@ const deleteArticle = () => {
         done();
       });
   });
-  it("should be able to delete article if it is found", (done) => {
+  it("should be able to add comment if it is valid", (done) => {
     const article = new Article(ArticleValues.validArticle);
     article.save();
     chai
       .request(server)
-      .delete("/api/articles/" + article._id)
-      .set(ArticleValues.validToken)
+      .post(`/api/articles/comments/${article._id} `)
+      .send(ArticleValues.validComment)
       .end((err, res) => {
         expect(err).to.be.null;
-        expect(res).to.have.status(200);
+        expect(res).to.have.status(201);
         expect(res.body).to.have.property(
           "message",
-          "post deleted successfully"
+          "comment created successfully"
         );
         done();
       });
   });
 };
 
-export default deleteArticle;
+export default addComment;

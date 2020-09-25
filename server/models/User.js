@@ -11,6 +11,7 @@ const adminSchema = mongoose.Schema({
     required: true,
     max: 1050,
   },
+  isAdmin: Boolean,
 });
 
 const adminModel = mongoose.model("Admin", adminSchema);

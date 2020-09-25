@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 const TokenValidationTest = () => {
   it("should return 401 if no token is provided", (done) => {
     afterEach(async () => {
-      await Article.remove({});
+      await Article.deleteMany({});
       server.close();
     });
     chai
@@ -31,7 +31,8 @@ const TokenValidationTest = () => {
       .set(ArticleValues.invalidToken)
       .send(ArticleValues.validArticle)
       .end((err, res) => {
-        expect(err).to.be.null, expect(res).to.have.status(400);
+        expect(err).to.be.null;
+        expect(res).to.have.status(400);
         done();
       });
   });
@@ -44,6 +45,7 @@ const TokenValidationTest = () => {
   //     .end((err, res) => {
   //       expect(err).to.be.null;
   //       expect(res).to.have.status(200);
+  //       expect(res.header).to.have.property("auth-token");
   //       done();
   //     });
   // });

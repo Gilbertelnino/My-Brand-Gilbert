@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import Admin from "../models/User";
 import { loginValidation } from "../validator/validation";
+import { onError, onSuccess } from "../utils/response";
 
 export class UserController {
   // create user
@@ -37,14 +38,14 @@ export class UserController {
     // check if is exists
 
     const user = await Admin.findOne({ email: req.body.email });
-    if (!user) return onError(res, 401, "Email Not Found");
+    if (!user) return onError(res, 401, "Invalid Email or Password");
 
     // check if password is correct
     const validPassword = await bcrypt.compare(
       req.body.password,
       user.password
     );
-    if (!validPassword) return onError(res, 401, "Password do not match");
+    if (!validPassword) return onError(res, 401, "Invalid Email or Password");
 
     // create a token
 

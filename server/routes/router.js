@@ -26,7 +26,7 @@ router.post(
 router.get("/articles/:id", validateObjectId, PostController.retrieveOnePost);
 // create comments
 router.post(
-  "/articles/:id/comments",
+  "/articles/comments/:id",
   validateObjectId,
   PostController.comments
 );
@@ -70,7 +70,7 @@ router.get("/profile", ProfileControllers.getProfile);
 
 // update profile
 router.patch(
-  "/profile/:id/edit",
+  "/profile/edit/:id",
   validateObjectId,
   verify,
   ProfileControllers.updateProfile
@@ -78,7 +78,7 @@ router.patch(
 
 // delete profile
 router.delete(
-  "/profile/:id/delete",
+  "/profile/delete/:id",
   validateObjectId,
   verify,
   ProfileControllers.deleteProfile

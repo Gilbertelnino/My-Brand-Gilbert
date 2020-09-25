@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 
 const getMessage = () => {
   afterEach(async () => {
-    // await Message.deleteMany({});
+    await Message.deleteMany({});
     server.close();
   });
   it("should return 404 status if there is no message", (done) => {

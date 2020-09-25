@@ -20,5 +20,15 @@ const ArticleValues = {
     title: "updated title for testing",
     subtitle: "updated subtitle for testing",
   },
+  validComment: {
+    name: "elnino",
+    email: "elni@gmail.com",
+    commentContent: "this comment content for testing purpose",
+  },
+  invalidComment: {
+    name: "",
+    email: "elni@gmail.com",
+    commentContent: "this comment content for testing purpose",
+  },
 };
 export default ArticleValues;

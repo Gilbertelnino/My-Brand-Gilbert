@@ -26,7 +26,6 @@ export class PostController {
     const { error } = postValidation(req.body);
     if (error) return onError(res, 400, error.details[0].message);
     if (!req.file) return onError(res, 400, "Image is required");
-    console.log(req.file);
     const post = new Blogs({
       title: req.body.title,
       subtitle: req.body.subtitle,
@@ -79,7 +78,7 @@ export class PostController {
         blog.comments_total++;
         await blog.save();
 
-        return onSuccess(res, 201, "comment created successfull", comment);
+        return onSuccess(res, 201, "comment created successfully", comment);
       }
     } catch (err) {
       return onError(res, 500, "internal server error");
