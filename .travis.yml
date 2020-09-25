@@ -6,4 +6,13 @@ node_js:
 after_success:
   - npm run coverage
 
-services: mongodb
+services:
+  - mongodb
+
+env:
+  - MONGO_CONNECT=mongodb://localhost/test
+  - PORT=3000
+
+script:
+  - npm ci
+  - npm test

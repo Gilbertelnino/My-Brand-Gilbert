@@ -1,5 +1,5 @@
 import chai from "chai";
-import { afterEach } from "mocha";
+import { beforeEach, afterEach } from "mocha";
 
 import chaiHttp from "chai-http";
 import server from "../../index";
@@ -10,9 +10,11 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const createArticle = () => {
+  beforeEach(async () => {
+    await Article.deleteMany({});
+  });
   afterEach(async () => {
-    await Article.remove({});
-    server.close();
+    await Article.deleteMany({});
   });
   it("should return 401 status if client is not logged in", (done) => {
     chai
@@ -88,7 +90,7 @@ const createArticle = () => {
         done();
       });
   });
-  it("should save article in the database if it is valid and return 201 status", (done) => {
+  it("should save article in the database if it is valid", (done) => {
     chai
       .request(server)
       .post("/api/articles/create")

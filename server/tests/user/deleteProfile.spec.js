@@ -2,26 +2,27 @@ import chai from "chai";
 import { beforeEach, afterEach } from "mocha";
 import chaiHttp from "chai-http";
 import server from "../../index";
-import Article from "../../models/Article";
-import ArticleValues from "../asset/article";
+import Profile from "../../models/Profile";
+import VerifyToken from "../asset/article";
+import ProfileValues from "../asset/userData";
 
 const { expect } = chai;
 chai.use(chaiHttp);
 
-const deleteArticle = () => {
+const deleteProfile = () => {
   beforeEach(async () => {
-    await Article.deleteMany({});
+    await Profile.deleteMany({});
   });
   afterEach(async () => {
-    await Article.deleteMany({});
+    await Profile.deleteMany({});
   });
-  it("should not able to delete article if there is no token provided", (done) => {
-    const article = new Article(ArticleValues.validArticle);
-    article.save();
+  it("should not able to delete profile if there is no token provided", (done) => {
+    const profile = new Profile(ProfileValues.validProfile);
+    profile.save();
     chai
       .request(server)
-      .delete("/api/articles/" + article._id)
-      .set(ArticleValues.noTokenProvided)
+      .delete("/api/profile/delete/" + profile._id)
+      .set(VerifyToken.noTokenProvided)
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(401);
@@ -29,11 +30,11 @@ const deleteArticle = () => {
         done();
       });
   });
-  it("should not be able to delete article if id is invalid or id not found", (done) => {
+  it("should not be able to delete profile if id is invalid", (done) => {
     chai
       .request(server)
-      .delete("/api/articles/1")
-      .set(ArticleValues.validToken)
+      .delete("/api/profile/delete/1")
+      .set(VerifyToken.validToken)
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(404);
@@ -41,23 +42,23 @@ const deleteArticle = () => {
         done();
       });
   });
-  it("should be able to delete article if it is found", (done) => {
-    const article = new Article(ArticleValues.validArticle);
-    article.save();
+  it("should be able to delete profile if it is found", (done) => {
+    const profile = new Profile(ProfileValues.validProfile);
+    profile.save();
     chai
       .request(server)
-      .delete("/api/articles/" + article._id)
-      .set(ArticleValues.validToken)
+      .delete("/api/profile/delete/" + profile._id)
+      .set(VerifyToken.validToken)
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
         expect(res.body).to.have.property(
           "message",
-          "post deleted successfully"
+          "profile deleted successfully"
         );
         done();
       });
   });
 };
 
-export default deleteArticle;
+export default deleteProfile;

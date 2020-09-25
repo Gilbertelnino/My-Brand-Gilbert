@@ -13,7 +13,7 @@ const updateArticle = () => {
     await Article.deleteMany({});
     server.close();
   });
-  it("should not able to delete article if there is no token provided", (done) => {
+  it("should not able to update article if there is no token provided", (done) => {
     const article = new Article(ArticleValues.validArticle);
     article.save();
     chai

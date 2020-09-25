@@ -4,7 +4,7 @@
   "description": "personal blog",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=text --reporter=lcov mocha server/tests/*.spec.js --require @babel/register --timeout=30000 --exit",
+    "test": "mocha server/tests/*.spec.js --require @babel/register --timeout=30000 --exit",
     "dev": "nodemon --exec babel-node server/index.js",
     "start": "node --exec babel-node server/index.js",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"

@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 
 const getSingleBlog = () => {
   afterEach(async () => {
-    await Article.remove({});
+    await Article.deleteMany({});
     server.close();
   });
   it("should return an article and 200 status if valid id is passed", (done) => {

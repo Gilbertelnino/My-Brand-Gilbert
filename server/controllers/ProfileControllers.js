@@ -8,7 +8,7 @@ export class ProfileControllers {
     try {
       const profile = await Profile.find();
 
-      if (!profile) {
+      if (profile.length === 0) {
         return onError(res, 404, "No profile Yet!");
       } else {
         return onSuccess(res, 200, "Profile fetched successfully", profile);
@@ -84,7 +84,7 @@ export class ProfileControllers {
         );
       else {
         const oneProfile = await Profile.deleteOne({ _id: req.params.id });
-        return onSuccess(res, 204, "profile deleted successfully", oneProfile);
+        return onSuccess(res, 200, "profile deleted successfully", oneProfile);
       }
     } catch (error) {
       return onError(res, 500, "Internal Server Error");

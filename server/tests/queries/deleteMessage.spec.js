@@ -1,5 +1,5 @@
 import chai from "chai";
-import { afterEach } from "mocha";
+import { afterEach, beforeEach } from "mocha";
 
 import chaiHttp from "chai-http";
 import server from "../../index";
@@ -11,9 +11,11 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const deleteMessage = () => {
+  beforeEach(async () => {
+    await Message.deleteMany({});
+  });
   afterEach(async () => {
-    // await Message.deleteMany({});
-    server.close();
+    await Message.deleteMany({});
   });
   it("should not able to delete message if there is no token provided", (done) => {
     const message = new Message(MessagesValues.validMessage);
