@@ -1,5 +1,5 @@
 import chai from "chai";
-import { afterEach } from "mocha";
+import { beforeEach, afterEach } from "mocha";
 
 import chaiHttp from "chai-http";
 import server from "../../index";
@@ -10,9 +10,11 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const getMessage = () => {
+  beforeEach(async () => {
+    await Message.deleteMany({});
+  });
   afterEach(async () => {
     await Message.deleteMany({});
-    server.close();
   });
   it("should return 404 status if there is no message", (done) => {
     chai
@@ -47,6 +49,11 @@ const getMessage = () => {
         name: "elnino",
         email: "elni@gmail.com",
         message: "this is a second message for testing",
+      },
+      {
+        name: "elnino",
+        email: "robort@gmail.com",
+        message: "this is a third message for testing",
       },
     ]);
     chai
