@@ -1,17 +1,16 @@
 language: node_js
 
 node_js:
-  - 12.16.3
-
-after_success:
-  - npm run coverage
+  - "stable"
 
 services:
   - mongodb
 
 env:
-  - MONGO_CONNECT=mongodb://localhost/test
-  - PORT=3000
+  - MONGO_CONNECT=mongodb://localhost/tests
+
+after_success:
+  - npm run coverage
 
 script:
   - npm ci

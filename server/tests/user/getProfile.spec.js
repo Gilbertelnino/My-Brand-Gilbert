@@ -9,9 +9,9 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const getProfile = () => {
-  beforeEach(async () => {
-    await Profile.deleteMany({});
-  });
+  // beforeEach(async () => {
+  //   await Profile.deleteMany({});
+  // });
   afterEach(async () => {
     await Profile.deleteMany({});
   });

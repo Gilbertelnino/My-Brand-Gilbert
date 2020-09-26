@@ -1,5 +1,5 @@
 import chai from "chai";
-import { afterEach } from "mocha";
+import { beforeEach, afterEach } from "mocha";
 import chaiHttp from "chai-http";
 import server from "../../index";
 import Article from "../../models/Article";
