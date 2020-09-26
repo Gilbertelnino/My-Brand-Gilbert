@@ -9,9 +9,9 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const getProfile = () => {
-  beforeEach(async () => {
-    await Profile.deleteMany({});
-  });
+  // beforeEach(async () => {
+  //   await Profile.deleteMany({});
+  // });
   afterEach(async () => {
     await Profile.deleteMany({});
   });
@@ -28,28 +28,16 @@ const getProfile = () => {
   });
 
   it("should return profile if it is available", (done) => {
-    Profile.collection.insertMany([
-      {
-        firstName: "Ndatimana",
-        lastName: "Gilbert",
-        email: "gilbeltelnino@gmail.com",
-        password: "1234567",
-        gender: "male",
-        jobRole: "full stack software developer",
-        department: "software developer",
-        address: "KN 76 St",
-      },
-      {
-        firstName: "Gilbert",
-        lastName: "elnino",
-        email: "gilbeltelni@gmail.com",
-        password: "1234567",
-        gender: "male",
-        jobRole: "full stack software developer",
-        department: "software developer",
-        address: "KN 76 St",
-      },
-    ]);
+    Profile.collection.insertOne({
+      firstName: "Ndatimana",
+      lastName: "Gilbert",
+      email: "gilbeltelnino@gmail.com",
+      password: "1234567",
+      gender: "male",
+      jobRole: "full stack software developer",
+      department: "software developer",
+      address: "KN 76 St",
+    });
     chai
       .request(server)
       .get("/api/profile")

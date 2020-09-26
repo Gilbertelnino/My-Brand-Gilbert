@@ -10,9 +10,9 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const getMessage = () => {
-  beforeEach(async () => {
-    await Message.deleteMany({});
-  });
+  // beforeEach(async () => {
+  //   await Message.deleteMany({});
+  // });
   afterEach(async () => {
     await Message.deleteMany({});
   });
@@ -49,11 +49,6 @@ const getMessage = () => {
         name: "elnino",
         email: "elni@gmail.com",
         message: "this is a second message for testing",
-      },
-      {
-        name: "elnino",
-        email: "robort@gmail.com",
-        message: "this is a third message for testing",
       },
     ]);
     chai
