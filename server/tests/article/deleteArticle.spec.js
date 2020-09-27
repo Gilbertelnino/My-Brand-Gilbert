@@ -9,9 +9,9 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const deleteArticle = () => {
-  beforeEach(async () => {
-    await Article.deleteMany({});
-  });
+  // beforeEach(async () => {
+  //   await Article.deleteMany({});
+  // });
   afterEach(async () => {
     await Article.deleteMany({});
   });

@@ -7,7 +7,7 @@ services:
   - mongodb
 
 env:
-  - MONGO_CONNECT=mongodb://localhost/tests
+  - MONGO_CONNECT=mongodb://localhost/brandtest
 
 after_success:
   - npm run coverage

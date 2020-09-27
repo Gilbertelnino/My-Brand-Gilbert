@@ -1,5 +1,5 @@
 import chai from "chai";
-import { beforeEach, afterEach } from "mocha";
+import { afterEach } from "mocha";
 
 import chaiHttp from "chai-http";
 import server from "../../index";
@@ -9,12 +9,6 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const getProfile = () => {
-  // beforeEach(async () => {
-  //   await Profile.deleteMany({});
-  // });
-  afterEach(async () => {
-    await Profile.deleteMany({});
-  });
   it("should return 404 status if there is no profile", (done) => {
     chai
       .request(server)
