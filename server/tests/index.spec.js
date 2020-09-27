@@ -7,7 +7,10 @@ import deleteArticle from "./article/deleteArticle.spec";
 import updateArticle from "./article/updateArticle.spec";
 import addLike from "./article/like.spec.js";
 import addComment from "./article/comment.spec.js";
+
+// modekls
 import Message from "../models/Message";
+import Profile from "../models/Profile";
 
 // quiries import
 import getMessage from "./queries/getMessage.spec";
@@ -61,15 +64,12 @@ describe("login user test", () => {
 
 // PROFILE
 
-describe("get profile test", () => {
+describe("Profile test suit", () => {
+  afterEach(async () => {
+    await Profile.deleteMany({});
+  });
   describe("GET /api/profile", getProfile);
-});
-describe("create profile test", () => {
   describe("POST /api/profile/create", createProfile);
-});
-describe("edit profile test", () => {
   describe("PATCH /api/profile/edit/:id", updateProfile);
-});
-describe("delete profile test", () => {
   describe("DELETE /api/profile/delete/:id", deleteProfile);
 });

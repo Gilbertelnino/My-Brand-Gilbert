@@ -9,9 +9,6 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const getProfile = () => {
-  afterEach(async () => {
-    await Profile.deleteMany({});
-  });
   it("should return 404 status if there is no profile", (done) => {
     chai
       .request(server)
