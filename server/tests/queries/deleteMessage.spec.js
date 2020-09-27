@@ -11,9 +11,9 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const deleteMessage = () => {
-  beforeEach(async () => {
-    await Message.deleteMany({});
-  });
+  // beforeEach(async () => {
+  //   await Message.deleteMany({});
+  // });
   afterEach(async () => {
     await Message.deleteMany({});
   });

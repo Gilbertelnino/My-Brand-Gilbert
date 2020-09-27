@@ -1,5 +1,5 @@
 import chai from "chai";
-import { beforeEach, afterEach } from "mocha";
+import { afterEach } from "mocha";
 
 import chaiHttp from "chai-http";
 import server from "../../index";
@@ -10,9 +10,6 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const getMessage = () => {
-  // beforeEach(async () => {
-  //   await Message.deleteMany({});
-  // });
   afterEach(async () => {
     await Message.deleteMany({});
   });
