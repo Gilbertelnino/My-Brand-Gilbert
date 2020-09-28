@@ -5,14 +5,17 @@ import swaggerUi from "swagger-ui-express";
 import routers from "./routes/router";
 import { connectDB } from "./models/db";
 import swaggerDocument from "../swagger.json";
+import prodMiddleware from "./middlewares/prod";
 
 dotenv.config();
+const app = express();
 
 // call connection db function
 connectDB();
-const app = express();
 app.use(express.json());
 app.use("/images", express.static("images"));
+// production middleware
+prodMiddleware(app);
 
 app.use("/api", routers);
 // swagger
