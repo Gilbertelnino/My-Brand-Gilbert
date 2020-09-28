@@ -19,7 +19,7 @@ const addLike = () => {
   it("should not be able to add like if id is invalid", (done) => {
     chai
       .request(server)
-      .patch("/api/likes/1")
+      .patch("/api/articles/likes/1")
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(404);
