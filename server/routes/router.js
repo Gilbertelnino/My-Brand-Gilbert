@@ -31,7 +31,7 @@ router.post(
   PostController.comments
 );
 // add likes
-router.patch("/likes/:id", validateObjectId, PostController.likes);
+router.patch("/articles/likes/:id", validateObjectId, PostController.likes);
 
 // Update an existing article
 router.patch(

@@ -1,8 +1,10 @@
 import "@babel/polyfill";
 import express from "express";
 import dotenv from "dotenv";
+import swaggerUi from "swagger-ui-express";
 import routers from "./routes/router";
 import { connectDB } from "./models/db";
+import swaggerDocument from "../swagger.json";
 
 dotenv.config();
 
@@ -13,6 +15,8 @@ app.use(express.json());
 app.use("/images", express.static("images"));
 
 app.use("/api", routers);
+// swagger
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const PORT = process.env.PORT || 5000;
 

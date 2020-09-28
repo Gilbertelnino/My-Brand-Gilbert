@@ -32,7 +32,7 @@ const addLike = () => {
     article.save();
     chai
       .request(server)
-      .patch(`/api/likes/${article._id} `)
+      .patch(`/api/articles/likes/${article._id} `)
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(201);
