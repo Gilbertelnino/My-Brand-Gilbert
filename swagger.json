@@ -8,7 +8,7 @@
       "email": "gilbeltelnino@gmail.com"
     }
   },
-  "host": "localhost:3000",
+  "host": "gilbertbrand.herokuapp.com",
   "basePath": "/api",
   "tags": [
     {
