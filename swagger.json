@@ -30,7 +30,7 @@
   ],
   "schemes": ["http", "https"],
   "paths": {
-    "/artcles/create": {
+    "/articles/create": {
       "post": {
         "tags": ["Articles"],
         "summary": "Create an Articles",
@@ -138,7 +138,7 @@
         }
       }
     },
-    "/artcles/{article_id}": {
+    "/articles/{articl_id}": {
       "patch": {
         "tags": ["Articles"],
         "summary": "update existing Article",
@@ -153,7 +153,7 @@
             "type": "string"
           },
           {
-            "name": "article_id",
+            "name": "articl_id",
             "in": "path",
             "required": true
           },
@@ -272,7 +272,7 @@
         }
       }
     },
-    "/artcles/likes/{article_id}": {
+    "/articles/likes/{article_id}": {
       "patch": {
         "tags": ["Articles"],
         "summary": "add like to the existing Article",
@@ -399,7 +399,7 @@
         "tags": ["Profile"],
         "summary": "Create an Profile",
         "description": "create an Profile if you are an admin of the site",
-        "consumes": ["multipart/form-data"],
+        "consumes": ["application/json"],
         "produces": ["application/json"],
         "parameters": [
           {
@@ -409,52 +409,13 @@
             "type": "string"
           },
           {
-            "in": "formData",
-            "name": "firstName",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "formData",
-            "name": "lastName",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "formData",
-            "name": "email",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "formData",
-            "name": "password",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "formData",
-            "name": "gender",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "formData",
-            "name": "jobRole",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "formData",
-            "name": "department",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "formData",
-            "name": "address",
-            "type": "string",
-            "required": true
+            "in": "body",
+            "name": "body",
+            "description": "create a profile",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Profile"
+            }
           }
         ],
         "responses": {
