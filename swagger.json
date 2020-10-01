@@ -235,7 +235,7 @@
         }
       }
     },
-    "articles/comments/{article_id}": {
+    "/articles/comments/{article_id}": {
       "post": {
         "tags": ["Articles"],
         "summary": "Comment on an Articles",
