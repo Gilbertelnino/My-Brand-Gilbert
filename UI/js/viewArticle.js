@@ -12,6 +12,13 @@ const fullMode = () => {
         document
           .getElementsByClassName("blog-img")[0]
           .setAttribute("src", data.imageURL);
+        document
+          .querySelector('meta[name="description"]')
+          .setAttribute(
+            "content",
+            data.subtitle
+          );
+        document.title = data.title;
         document.getElementsByClassName("blog-title")[0].innerHTML = data.title;
         document.getElementsByClassName("blog-content-detail")[0].innerHTML =
           data.content;
