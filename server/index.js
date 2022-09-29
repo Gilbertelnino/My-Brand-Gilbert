@@ -12,6 +12,7 @@ dotenv.config();
 const app = express();
 
 // call connection db function
+// reploy
 connectDB();
 app.use(express.json());
 app.use("/images", express.static("images"));
